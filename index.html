@@ -324,9 +324,7 @@ text-shadow:
       alt="Cruise ship"
     >
 
-    <div class="cruise-title" id="cruiseName">
-      ICON OF THE SEAS
-    </div>
+ <div class="cruise-title" id="cruiseName"></div>
   </div>
 
   <div class="final-message-box">
@@ -384,17 +382,17 @@ async function loadDetails() {
     return;
   }
 
-  const friendName = data.friend_name || "Charlotte";
+  const friendName = data.friend_name || "";
   document.getElementById("namePage1").textContent = friendName;
-
-  document.getElementById("cruiseName").textContent =
-    data.cruise_name || "ICON OF THE SEAS";
 
   document.getElementById("cruisePhoto").src =
     data.photo_url || "./images/image-placeholder.jpeg";
 
   document.getElementById("tripMessage").textContent =
     data.trip_message || "";
+	
+	document.getElementById("cruiseName").textContent =
+  data.cruise_ship || "";
 }
 
 function setupScratch() {
