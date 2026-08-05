@@ -370,8 +370,9 @@
 
       editingRevealId = data.id;
 
-      document.getElementById("friendName").value = data.friend_name || "";
-      document.getElementById("tripMessage").value = data.trip_message || "";
+     document.getElementById("friendName").value = data.friend_name || "";
+document.getElementById("cruiseShip").value = data.cruise_ship || "";
+document.getElementById("tripMessage").value = data.trip_message || "";
     }
 
     form.addEventListener("submit", async function(event) {
@@ -381,11 +382,12 @@
       submitButton.textContent = editToken ? "Saving..." : "Creating...";
 
       const friendName = document.getElementById("friendName").value.trim();
-      const tripMessage = document.getElementById("tripMessage").value.trim();
-      const photoFile = document.getElementById("friendPhoto").files[0];
+const cruiseShip = document.getElementById("cruiseShip").value.trim();
+const tripMessage = document.getElementById("tripMessage").value.trim();
+const photoFile = document.getElementById("friendPhoto").files[0];
 
-      if (!friendName || !tripMessage) {
-        showError("Please add name(s) and a reveal message.");
+    if (!friendName || !cruiseShip || !tripMessage) {
+       showError("Please add name(s), the cruise ship name and a personalised message.");
         return;
       }
 
@@ -420,6 +422,7 @@
       if (editToken && editingRevealId) {
         const updateData = {
           friend_name: friendName,
+          cruise_ship: cruiseShip,
           trip_message: tripMessage
         };
 
@@ -484,6 +487,7 @@
           {
             id: id,
             friend_name: friendName,
+            cruise_ship: cruiseShip,
             photo_url: photoUrl,
             trip_message: tripMessage,
             edit_token: newEditToken,
